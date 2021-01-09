@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     # third-party apps
 
     # own project apps
-    'purchase',
 ]
 
 MIDDLEWARE = [
@@ -59,9 +58,7 @@ ROOT_URLCONF = 'RTS.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            BASE_DIR / 'templates'
-            ],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
