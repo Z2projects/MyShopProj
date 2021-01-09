@@ -2,3 +2,4 @@ db.sqlite3
 RTS/__pycache__/
 purchase/__pycache__/
 purchase/migrations/
+RTS/settings.py.v0
