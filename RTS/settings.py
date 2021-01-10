@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     # third-party apps
 
     # own project apps
-    'purchase',
+    'products',
 ]
 
 MIDDLEWARE = [

@@ -2,13 +2,13 @@
 
 {% block content %}
 
-<h1>PurchaseEntryForm</h1>
+<h1>ProductEntryForm</h1>
 
 <form action="submitted" method='post'>
     {% csrf_token %}
     Product Name <input type="text" name="product_name" />
     <br>
-    Cost Price <input type="number" name="cost_price" step="any" />
+    Rate <input type="number" name="rate" step="any" />
     <br>
     Quantity <input type="number" name="quantity" />
     <br>

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<b>ProductList</b><br>
+<b>Name Rate Quantity CostPrice</b><br>
+
+{% for x in products %}
+<i>{{ x.name }}</i>
+<i>{{ x.rate }}</i>
+<i>{{ x.quantity }}</i>
+<i>{{ x.cost_price }}</i>
+<br>
+{% endfor %}
+
+{% endblock %}

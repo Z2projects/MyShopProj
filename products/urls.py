@@ -17,5 +17,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.purchase_entry),
+    path('', views.product_entry),
+    path('list', views.product_list),
+    path('submitted', views.product_save),
 ]

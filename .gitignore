@@ -1,4 +1,4 @@
 db.sqlite3
 RTS/__pycache__/
-purchase/__pycache__/
-purchase/migrations/
+products/migrations/
+products/__pycache__/
