@@ -17,8 +17,15 @@ def product_save(request):
     r = request.POST["rate"]
     q = request.POST["quantity"]
     cp = int(r)*int(q)
-    Product.objects.create(name=pn, ptype=t, rate=r, quantity=q, cost_price=cp)
-    return HttpResponse("product saved")
+    try:
+        data = Product.objects.get(name=pn)
+        nq = data.quantity + int(q)
+        ncp = data.cost_price + cp
+        Product.objects.filter(name=pn).update(rate=r, quantity=nq, cost_price=ncp)
+        return HttpResponse("product already exists - updated new rates/quantity/cp")
+    except Product.DoesNotExist:
+        Product.objects.create(name=pn, ptype=t, rate=r, quantity=q, cost_price=cp)
+        return HttpResponse("product saved")
 
 def product_delete(request):
     return render(request, 'product_delete.html')
