@@ -3,10 +3,11 @@
 {% block content %}
 
 <b>ProductList</b><br>
-<b>Name Rate Quantity CostPrice</b><br>
+<b>Name Type Rate Quantity CostPrice</b><br>
 
 {% for x in products %}
 <i>{{ x.name }}</i>
+<i>{{ x.ptype }}</i>
 <i>{{ x.rate }}</i>
 <i>{{ x.quantity }}</i>
 <i>{{ x.cost_price }}</i>

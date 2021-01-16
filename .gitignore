@@ -1,10 +1,8 @@
 db.sqlite3
 RTS/__pycache__/
-<<<<<<< HEAD
 products/migrations/
 products/__pycache__/
-=======
 purchase/__pycache__/
 purchase/migrations/
 RTS/settings.py.v0
->>>>>>> 4b682f96557594de39113af4ae38232a36793760
+.gitignore
