@@ -17,3 +17,10 @@ def product_save(request):
     cp = int(r)*int(q)
     p = Product.objects.create(name=pn, rate=r, quantity=q, cost_price=cp)
     return HttpResponse("product saved")
+
+def product_delete(request):
+    return render(request, 'product_delete.html')
+
+def product_deleted(request):
+    Product.objects.filter(name=request.POST["product_name"]).delete()
+    return HttpResponse("product removed")

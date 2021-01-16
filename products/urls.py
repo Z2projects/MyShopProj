@@ -20,4 +20,6 @@ urlpatterns = [
     path('', views.product_entry),
     path('list', views.product_list),
     path('submitted', views.product_save),
+    path('delete', views.product_delete),
+    path('deleted', views.product_deleted),
 ]
