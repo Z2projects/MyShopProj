@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Product
 from django.http import HttpResponse
+import json
 
 # Create your views here.
 def product_entry(request):
@@ -24,3 +25,14 @@ def product_delete(request):
 def product_deleted(request):
     Product.objects.filter(name=request.POST["product_name"]).delete()
     return HttpResponse("product removed")
+
+def product_search(request):
+    return render(request, 'product_search.html')
+
+def product_detail(request):
+    try:
+        res = Product.objects.get(name=request.POST["product_name"])
+        data = {'name': res.name, 'rate': res.rate, 'quantity': res.quantity, 'cost_price': res.cost_price}
+        return HttpResponse(json.dumps(data))
+    except Product.DoesNotExist:
+        return HttpResponse("product does not exist")
