@@ -1,10 +1,11 @@
 Available
-- products app listing
-- products app save
-- products app delete
+- list all products
+- save product
+- delete product
+- search product details
+- field type was added to products
+- save product was upgraded to update data when product already existed
 
 Next
-- Add item search to products app
-- Add update product details
-- Add type to products
-- 
+- remove cost price field
+- add data field
