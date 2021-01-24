@@ -4,11 +4,12 @@ Available
 - delete product
 - search product details
 - field type was added to products
-- save product was upgraded to update data when product already existed
 - cost price field removed from products
-- new type field added to product
+- new type model added to product
+- list all types feature added
 
 Next
 - sell transaction history
 - buy transaction history
 - the transaction should update product quantity
+- get rid of rates from products model
