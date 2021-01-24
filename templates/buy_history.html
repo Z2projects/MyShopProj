@@ -3,11 +3,12 @@
 {% block content %}
 
 <b>ProductList</b><br>
-<b>Name Type Rate Quantity</b><br>
+<b>Date     Name     Type     Rate    Quantity</b><br>
 
-{% for x in products %}
+{% for x in txns %}
+<i>{{ x.bdate }}</i>
 <i>{{ x.name }}</i>
-<i>{{ x.ptype.ptype }}</i>
+<i>{{ x.ptype }}</i>
 <i>{{ x.rate }}</i>
 <i>{{ x.quantity }}</i>
 <br>

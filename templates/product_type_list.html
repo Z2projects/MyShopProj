@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<b>ProductTypes</b><br>
+
+{% for x in ptypes %}
+<i>{{ x.ptype }}</i>
+<br>
+{% endfor %}
+
+{% endblock %}

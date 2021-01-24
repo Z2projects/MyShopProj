@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>ProductTypeEntryForm</h1>
+
+<form action="tsubmitted" method='post'>
+    {% csrf_token %}
+    Product Type <input type="text" name="product_type" />
+    <br>
+    <input type="submit" name="Submit"/>
+</form>
+
+{% endblock %}

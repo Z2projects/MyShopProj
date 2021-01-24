@@ -24,4 +24,7 @@ urlpatterns = [
     path('deleted', views.product_deleted),
     path('search', views.product_search),
     path('product_detail', views.product_detail),
+    path('newproducttype', views.product_type_entry),
+    path('tsubmitted', views.product_type_save),
+    path('tlist', views.product_type_list),
 ]
