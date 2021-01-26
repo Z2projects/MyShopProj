@@ -7,9 +7,11 @@ Available
 - cost price field removed from products
 - new type model added to product
 - list all types feature added
+- buy transaction history (in new buy app)
+- get rid of rates from products model (in new buy app)
+- all new changes are being done in the buy app
+- the buy app contains all models
 
 Next
 - sell transaction history
-- buy transaction history
 - the transaction should update product quantity
-- get rid of rates from products model
