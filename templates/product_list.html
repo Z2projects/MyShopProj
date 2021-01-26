@@ -2,15 +2,13 @@
 
 {% block content %}
 
-<b>ProductList</b><br>
-<b>Name Type Rate Quantity</b><br>
+<b>Products</b><br>
 
 {% for x in products %}
 <i>{{ x.name }}</i>
 <i>{{ x.ptype.ptype }}</i>
-<i>{{ x.rate }}</i>
-<i>{{ x.quantity }}</i>
 <br>
+
 {% endfor %}
 
 {% endblock %}

@@ -4,20 +4,16 @@
 
 <h1>ProductEntryForm</h1>
 
-<form action="submitted" method='post'>
+<form action="psubmitted" method='post'>
     {% csrf_token %}
-    Product Types
-    <select id="product_types" name="product_type">
+    Product Type
+    <select id="pt" name="product_type">
         {% for x in ptypes %}
             <option value="{{ x.ptype }}">{{ x.ptype }}</option>
         {% endfor %}
     </select>
     <br>
-    Product Name <input type="text" name="product_name" />
-    <br>
-    Rate <input type="number" name="rate" step="any" />
-    <br>
-    Quantity <input type="number" name="quantity" />
+    Product Name <input type="text" name="product_name"/>
     <br>
     <input type="submit" name="Submit"/>
 </form>

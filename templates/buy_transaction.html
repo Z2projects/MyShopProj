@@ -4,11 +4,21 @@
 
 <h1>BuyTransactionForm</h1>
 
-<form action="saved" method='post'>
+<form action="buytxnsaved" method='post'>
     {% csrf_token %}
-    Product Name <input type="text" name="product_name" />
+    Product Name
+    <select id="product_name" name="product_name">
+        {% for x in products %}
+            <option value="{{ x.name }}">{{ x.name }}</option>
+        {% endfor %}
+    </select>
     <br>
-    Product Type <input type="text" name="product_type" />
+    Product Type
+    <select id="product_type" name="product_type">
+        {% for x in producttypes %}
+            <option value="{{ x.ptype }}">{{ x.ptype }}</option>
+        {% endfor %}
+    </select>
     <br>
     Rate <input type="number" name="rate" step="any" />
     <br>

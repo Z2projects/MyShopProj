@@ -1,21 +1,61 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Buy
 from datetime import datetime
+from .models import ProductType
+from .models import Product
+from .models import Buy
+from .models import Sell
 
 # Create your views here.
-def buy_product(request):
-    return render(request, 'buy_transaction.html')
+def product_type_form(request):
+    return render(request, 'product_type_entry.html')
 
-def buy_save(request):
-    pn = request.POST["product_name"]
+def product_type_save(request):
     t = request.POST["product_type"]
+    try:
+        ProductType.objects.get(ptype=t)
+        return HttpResponse("product type already exists")
+    except ProductType.DoesNotExist:
+        ProductType.objects.create(ptype=t)
+        return HttpResponse("new product type saved")
+
+def product_type_list(request):
+    p = ProductType.objects.all()
+    return render(request, 'product_type_list.html', {'ptypes': p})
+
+def product_form(request):
+    p = ProductType.objects.all()
+    return render(request, 'product_entry.html', {'ptypes': p})
+
+def product_save(request):
+    t = ProductType.objects.get(ptype=request.POST["product_type"])
+    p = request.POST["product_name"]
+    try:
+        Product.objects.get(name=p)    
+        return HttpResponse("product already exists")
+    except Product.DoesNotExist:
+        Product.objects.create(name=p,ptype=t)
+        return HttpResponse("new product saved")
+
+def product_list(request):
+    p = Product.objects.all()
+    return render(request, 'product_list.html', {'products': p})
+
+def buy_product_form(request):
+    p = Product.objects.all()
+    pt = ProductType.objects.all()
+    return render(request, 'buy_transaction.html', {'products': p, 'producttypes': pt})
+
+def buy_product(request):
+    p = Product.objects.get(name=request.POST["product_name"])
     r = request.POST["rate"]
     q = request.POST["quantity"]
     d = datetime.now()
-    Buy.objects.create(name=pn, ptype=t, bdate=d, rate=r, quantity=q)
-    return HttpResponse("product saved")
+    Buy.objects.create(bp=p,bdate=d,brate=r,bquantity=q)
+    return HttpResponse("buy transaction saved")
 
 def buy_history(request):
-    transactions = Buy.objects.all()
-    return render(request, 'buy_history.html', {'txns': transactions})
+    b = Buy.objects.all()
+    return render(request, 'buy_history.html', {'allbuy': b})
+        
+    

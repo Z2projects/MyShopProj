@@ -17,7 +17,13 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.buy_product),
-    path('saved', views.buy_save),
-    path('history', views.buy_history),
+    path('', views.buy_product_form),
+    path('buytxnsaved', views.buy_product),
+    path('newproducttype', views.product_type_form),
+    path('tsubmitted', views.product_type_save),
+    path('tlist', views.product_type_list),
+    path('newproduct', views.product_form),
+    path('psubmitted', views.product_save),
+    path('plist', views.product_list),
+    path('buyhistory', views.buy_history),
 ]
