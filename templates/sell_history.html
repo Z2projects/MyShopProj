@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<b>SellHistory</b><br>
+<b>Date ProductType ProductName Rate Quantity</b><br>
+{% for x in allsell %}
+    <i>{{ x.sdate }}</i>  
+    <i>{{ x.sp.ptype.ptype }}</i>
+    <i>{{ x.sp.name }}</i>
+    <i>{{ x.srate }}</i>
+    <i>{{ x.squantity }}</i>
+    <br>
+{% endfor %}
+
+{% endblock %}

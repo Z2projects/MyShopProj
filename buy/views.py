@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from datetime import datetime
 from .models import ProductType
 from .models import Product
 from .models import Buy
@@ -50,12 +49,32 @@ def buy_product(request):
     p = Product.objects.get(name=request.POST["product_name"])
     r = request.POST["rate"]
     q = request.POST["quantity"]
-    d = datetime.now()
-    Buy.objects.create(bp=p,bdate=d,brate=r,bquantity=q)
+    uq = p.quantity + int(q)
+    Product.objects.filter(name=request.POST["product_name"]).update(quantity=uq)
+    Buy.objects.create(bp=p,brate=r,bquantity=q)
     return HttpResponse("buy transaction saved")
 
 def buy_history(request):
     b = Buy.objects.all()
     return render(request, 'buy_history.html', {'allbuy': b})
+
+def sell_product_form(request):
+    p = Product.objects.all()
+    pt = ProductType.objects.all()
+    return render(request, 'sell_transaction.html', {'products': p, 'producttypes': pt})
         
-    
+def sell_product(request):
+    p = Product.objects.get(name=request.POST["product_name"])
+    r = request.POST["rate"]
+    q = request.POST["quantity"]
+    if p.quantity >= int(q):
+        uq = p.quantity - int(q)
+        Product.objects.filter(name=request.POST["product_name"]).update(quantity=uq)
+        Sell.objects.create(sp=p,srate=r,squantity=q)
+        return HttpResponse("sell transaction saved")
+    else:
+        return HttpResponse("no stock for this product")
+
+def sell_history(request):
+    s = Sell.objects.all()
+    return render(request, 'sell_history.html', {'allsell': s})
