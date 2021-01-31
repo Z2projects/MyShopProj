@@ -4,6 +4,7 @@ from .models import ProductType
 from .models import Product
 from .models import Buy
 from .models import Sell
+from django.http import JsonResponse
 
 # Create your views here.
 def product_type_form(request):
@@ -78,3 +79,10 @@ def sell_product(request):
 def sell_history(request):
     s = Sell.objects.all()
     return render(request, 'sell_history.html', {'allsell': s})
+
+def get_json_product_data(request, *args, **kwargs):
+    selected_type = kwargs.get('pt')
+    print(selected_type)
+    obj_product = list(ProductType.objects.get(ptype=selected_type).product_set.all().values())
+    print(obj_product)
+    return JsonResponse({'data':obj_product})

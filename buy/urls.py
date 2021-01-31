@@ -29,4 +29,5 @@ urlpatterns = [
     path('plist', views.product_list),
     path('buyhistory', views.buy_history),
     path('sellhistory', views.sell_history),
+    path('product-json/<str:pt>/', views.get_json_product_data),
 ]

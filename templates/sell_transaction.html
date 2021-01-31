@@ -1,22 +1,27 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="{% static 'sell.js' %}"></script>
+
 {% block content %}
 
 <h1>SellTransactionForm</h1>
 
 <form action="selltxnsaved" method='post'>
     {% csrf_token %}
-    Product Name
-    <select id="product_name" name="product_name">
-        {% for x in products %}
-            <option value="{{ x.name }}">{{ x.name }}</option>
-        {% endfor %}
-    </select>
-    <br>
     Product Type
     <select id="product_type" name="product_type">
         {% for x in producttypes %}
             <option value="{{ x.ptype }}">{{ x.ptype }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    Product Name
+    <select id="product_name" name="product_name">
+        {% for x in products %}
+            <option value="{{ x.name }}">{{ x.name }}</option>
         {% endfor %}
     </select>
     <br>
