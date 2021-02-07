@@ -1,15 +1,20 @@
 const typeInput = document.getElementById("product_type")
+var productInput = document.getElementById("product_name")
 
 typeInput.addEventListener('change', e=>{
-    console.log(e.target.value)
     const selectedType = e.target.value
-    console.log(selectedType)
     $.ajax({
         type: 'GET',
         url: `product-json/${selectedType}/`,
         success: function(response){
-            console.log(response.data)
             const productData = response.data
+            productInput.options.length = 0;
+            productData.map(i=>{
+                var opt = document.createElement('option')
+                opt.text = i.name
+                opt.value = i.name
+                productInput.appendChild(opt)
+            })
         },
         error: function(error){
             console.log(error)
