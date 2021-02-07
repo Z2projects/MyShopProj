@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 <h1>BuyTransactionForm</h1>
 
@@ -15,9 +19,6 @@
     <br>
     Product Name
     <select id="product_name" name="product_name">
-        {% for x in products %}
-            <option value="{{ x.name }}">{{ x.name }}</option>
-        {% endfor %}
     </select>
     <br>
     Rate <input type="number" name="rate" step="any" />
@@ -26,5 +27,7 @@
     <br>
     <input type="submit" name="Submit"/>
 </form>
+
+<script src="{% static 'buy_sell_txn_form.js' %}"></script>
 
 {% endblock %}
