@@ -82,7 +82,5 @@ def sell_history(request):
 
 def get_json_product_data(request, *args, **kwargs):
     selected_type = kwargs.get('pt')
-    print(selected_type)
     obj_product = list(ProductType.objects.get(ptype=selected_type).product_set.all().values())
-    print(obj_product)
     return JsonResponse({'data':obj_product})
