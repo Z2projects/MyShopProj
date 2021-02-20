@@ -17,7 +17,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.buy_product_form),
+    path('', views.index),
     path('buyy', views.buy_product_form),
     path('buytxnsaved', views.buy_product),
     path('sell', views.sell_product_form),

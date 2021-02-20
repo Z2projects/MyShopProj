@@ -84,3 +84,6 @@ def get_json_product_data(request, *args, **kwargs):
     selected_type = kwargs.get('pt')
     obj_product = list(ProductType.objects.get(ptype=selected_type).product_set.all().values())
     return JsonResponse({'data':obj_product})
+
+def index(request):
+    return render(request, 'index.html')
