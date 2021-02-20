@@ -18,6 +18,7 @@ from . import views
 
 urlpatterns = [
     path('', views.buy_product_form),
+    path('buyy', views.buy_product_form),
     path('buytxnsaved', views.buy_product),
     path('sell', views.sell_product_form),
     path('selltxnsaved', views.sell_product),
