@@ -11,7 +11,12 @@ Available
 - get rid of rates from products model (in new buy app)
 - all new changes are being done in the buy app
 - the buy app contains all models
-
-Next
 - sell transaction history
 - the transaction should update product quantity
+
+Next
+- customer name buy sell
+- discount percent flat buy sell
+- delete product
+- delete product type
+- format htmls
