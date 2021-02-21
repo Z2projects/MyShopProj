@@ -2,15 +2,25 @@
 
 {% block content %}
 
-<b>SellHistory</b><br>
-<b>Date ProductType ProductName Rate Quantity</b><br>
-{% for x in allsell %}
-    <i>{{ x.sdate }}</i>  
-    <i>{{ x.sp.ptype.ptype }}</i>
-    <i>{{ x.sp.name }}</i>
-    <i>{{ x.srate }}</i>
-    <i>{{ x.squantity }}</i>
-    <br>
-{% endfor %}
+<h3>Sell History</h3>
+
+<table>
+    <tr>
+        <th>Date</th>
+        <th>ProductType</th>
+        <th>ProductName</th>
+        <th>Rate</th>
+        <th>Quantity</th>
+    </tr>
+    {% for x in allsell %}
+    <tr>
+        <td>{{ x.sdate }}</td>
+        <td>{{ x.sp.ptype.ptype }}</td>
+        <td>{{ x.sp.name }}</td>
+        <td>{{ x.srate }}</td>
+        <td>{{ x.squantity }}</td>
+    </tr>
+    {% endfor %}
+</table>
 
 {% endblock %}

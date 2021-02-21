@@ -2,15 +2,25 @@
 
 {% block content %}
 
-<b>BuyHistory</b><br>
-<b>Date ProductType ProductName Rate Quantity</b><br>
-{% for x in allbuy %}
-    <i>{{ x.bdate }}</i>  
-    <i>{{ x.bp.ptype.ptype }}</i>
-    <i>{{ x.bp.name }}</i>
-    <i>{{ x.brate }}</i>
-    <i>{{ x.bquantity }}</i>
-    <br>
-{% endfor %}
+<h3>Buy History</h3>
+
+<table>
+    <tr>
+        <th>Date</th>
+        <th>Product Type</th>
+        <th>Product Name</th>
+        <th>Rate</th>
+        <th>Quantity</th>
+    </tr>
+    {% for x in allbuy %}
+    <tr>
+        <td>{{ x.bdate }}</td>
+        <td>{{ x.bp.ptype.ptype }}</td>
+        <td>{{ x.bp.name }}</td>
+        <td>{{ x.brate }}</td>
+        <td>{{ x.bquantity }}</td>
+    </tr>
+    {% endfor %}
+</table>
 
 {% endblock %}

@@ -2,19 +2,19 @@
 
 {% block content %}
 
-<h1>ProductEntryForm</h1>
+<h3>Product Entry Form</h3>
 
 <form action="psubmitted" method='post'>
     {% csrf_token %}
-    Product Type
+    <label for="product_type">Product Type</label>
     <select id="pt" name="product_type">
         {% for x in ptypes %}
             <option value="{{ x.ptype }}">{{ x.ptype }}</option>
         {% endfor %}
     </select>
     <br>
-    Product Name <input type="text" name="product_name"/>
-    <br>
+    <label for="product_name">Product Name</label>
+    <input type="text" name="product_name"/><br>
     <input type="submit" name="Submit"/>
 </form>
 

@@ -2,11 +2,15 @@
 
 {% block content %}
 
-<b>ProductTypes</b><br>
+<h3>Product Types</h3>
 
-{% for x in ptypes %}
-<i>{{ x.ptype }}</i>
-<br>
-{% endfor %}
+<table>
+    <th>Product Type</th>
+    {% for x in ptypes %}
+    <tr>
+        <td>{{ x.ptype }}</td>
+    </tr>
+    {% endfor %}
+</table>
 
 {% endblock %}
