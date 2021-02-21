@@ -6,25 +6,25 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-<h1>SellTransactionForm</h1>
+<h3>Sell Transaction Form</h3>
 
 <form action="selltxnsaved" method='post'>
     {% csrf_token %}
-    Product Type
+    <label for="product_type">Product Type</label>
     <select id="product_type" name="product_type">
         {% for x in producttypes %}
             <option value="{{ x.ptype }}">{{ x.ptype }}</option>
         {% endfor %}
     </select>
     <br>
-    Product Name
+    <label for="product_name">Product Name</label>
     <select id="product_name" name="product_name">
     </select>
     <br>
-    Rate <input type="number" name="rate" step="any" />
-    <br>
-    Quantity <input type="number" name="quantity" />
-    <br>
+    <label for="rate">Rate</label>
+    <input type="number" name="rate" step="any" /><br>
+    <label for="quantity">Quantity</label>
+    <input type="number" name="quantity" /><br>
     <input type="submit" name="Submit"/>
 </form>
 

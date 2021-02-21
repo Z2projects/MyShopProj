@@ -1,4 +1,4 @@
-"""v0 URL Configuration
+"""RTS URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.1/topics/http/urls/
@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('products/', include('products.urls')),
     path('', include('buy.urls')),
+    path('retail', include('retail.urls')),
 ]
