@@ -11,12 +11,14 @@ class Product(models.Model):
 
 class Buy(models.Model):
     bp = models.ForeignKey(Product, on_delete=models.CASCADE)
+    from_customer = models.CharField(max_length=20)
     bdate = models.DateTimeField(default=datetime.now)
     brate = models.IntegerField()
     bquantity = models.IntegerField()
 
 class Sell(models.Model):
     sp = models.ForeignKey(Product, on_delete=models.CASCADE)
+    to_customer = models.CharField(max_length=20)
     sdate = models.DateTimeField(default=datetime.now)
     srate = models.IntegerField()
     squantity = models.IntegerField()

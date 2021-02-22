@@ -47,11 +47,12 @@ def buy_product_form(request):
 
 def buy_product(request):
     p = Product.objects.get(name=request.POST["product_name"])
+    fc = request.POST["from_customer"]
     r = request.POST["rate"]
     q = request.POST["quantity"]
     uq = p.quantity + int(q)
     Product.objects.filter(name=request.POST["product_name"]).update(quantity=uq)
-    Buy.objects.create(bp=p,brate=r,bquantity=q)
+    Buy.objects.create(bp=p,from_customer=fc,brate=r,bquantity=q)
     return HttpResponse("buy transaction saved")
 
 def buy_history(request):
@@ -65,12 +66,13 @@ def sell_product_form(request):
         
 def sell_product(request):
     p = Product.objects.get(name=request.POST["product_name"])
+    tc = request.POST["to_customer"]
     r = request.POST["rate"]
     q = request.POST["quantity"]
     if p.quantity >= int(q):
         uq = p.quantity - int(q)
         Product.objects.filter(name=request.POST["product_name"]).update(quantity=uq)
-        Sell.objects.create(sp=p,srate=r,squantity=q)
+        Sell.objects.create(sp=p,to_customer=tc,srate=r,squantity=q)
         return HttpResponse("sell transaction saved")
     else:
         return HttpResponse("no stock for this product")
