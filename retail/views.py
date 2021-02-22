@@ -6,7 +6,6 @@ from .models import Buy
 from .models import Sell
 from django.http import JsonResponse
 
-# Create your views here.
 def product_type_form(request):
     return render(request, 'product_type_entry.html')
 

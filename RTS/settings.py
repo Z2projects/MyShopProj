@@ -41,8 +41,6 @@ INSTALLED_APPS = [
     # third-party apps
 
     # own project apps
-    'products',
-    'buy',
     'retail',
 ]
 
