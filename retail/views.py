@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import ProductType
 from .models import Product
@@ -39,6 +39,16 @@ def product_save(request):
 def product_list(request):
     p = Product.objects.all()
     return render(request, 'product_list.html', {'products': p})
+
+def product_delete_form(request):
+    pt = ProductType.objects.all()
+    return render(request, 'product_delete.html', {'producttypes': pt})
+
+def product_delete(request):
+    p = request.POST['product_name']
+    pt = ProductType.objects.filter(ptype=request.POST['product_type'])
+    Product.objects.filter(name=p,ptype=pt[0].id).delete()
+    return redirect('/retail/')
 
 def buy_product_form(request):
     p = Product.objects.all()

@@ -1,13 +1,30 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
 
-<h1>ProductDeleteForm</h1>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-<form action="deleted" method='post'>
+<h3>Delete Product Form</h3>
+
+<form action="product_deleted" method='post'>
     {% csrf_token %}
-    Product Name <input type="text" name="product_name" />
-    <input type="submit" name="delete"/>
+    <label for="product_type">Product Type</label>
+    <select id="product_type" name="product_type">
+        {% for x in producttypes %}
+            <option value="{{ x.ptype }}">{{ x.ptype }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <label for="product_name">Product Name</label>
+    <select id="product_name" name="product_name">
+    </select>
+    <br>
+    <input type="submit" name="Submit" value="Delete"/>
 </form>
+
+<script src="{% static 'js/buy_sell_txn_form.js' %}"></script>
+
 
 {% endblock %}
