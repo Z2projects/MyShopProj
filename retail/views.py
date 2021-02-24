@@ -6,6 +6,21 @@ from .models import Buy
 from .models import Sell
 from django.http import JsonResponse
 
+def buy_product_form(request):
+    pt = ProductType.objects.all()
+    return render(request, 'buy_transaction.html', {'producttypes': pt})
+
+def buy_product(request):
+    p = Product.objects.get(name=request.POST['product_name'])
+    fc = request.POST['from_customer']
+    r = request.POST['rate']
+    q = request.POST['quantity']
+    uq = p.quantity + int(q)
+    Product.objects.filter(name=request.POST['product_name']).update(quantity=uq)
+    Buy.objects.create(bp=p,from_customer=fc,brate=r,bquantity=q)
+    res = p.name + ' of type ' + p.ptype.ptype + ' purchased from customer ' + fc
+    return render(request,'results.html', {'result': res})
+
 def product_type_form(request):
     return render(request, 'product_type_entry.html')
 
@@ -49,21 +64,6 @@ def product_delete(request):
     pt = ProductType.objects.filter(ptype=request.POST['product_type'])
     Product.objects.filter(name=p,ptype=pt[0].id).delete()
     return redirect('/retail/')
-
-def buy_product_form(request):
-    p = Product.objects.all()
-    pt = ProductType.objects.all()
-    return render(request, 'buy_transaction.html', {'products': p, 'producttypes': pt})
-
-def buy_product(request):
-    p = Product.objects.get(name=request.POST["product_name"])
-    fc = request.POST["from_customer"]
-    r = request.POST["rate"]
-    q = request.POST["quantity"]
-    uq = p.quantity + int(q)
-    Product.objects.filter(name=request.POST["product_name"]).update(quantity=uq)
-    Buy.objects.create(bp=p,from_customer=fc,brate=r,bquantity=q)
-    return HttpResponse("buy transaction saved")
 
 def buy_history(request):
     b = Buy.objects.all()

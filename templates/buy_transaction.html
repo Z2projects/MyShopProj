@@ -6,30 +6,60 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-<h3>Buy Transaction Form</h3>
+<h3>Buy Product</h3>
 
-<form action="buytxnsaved" method='post'>
+<form action="buytransaction" method='post'>
     {% csrf_token %}
-    <label for="product_type">Product Type</label>
-    <select id="product_type" name="product_type">
-        {% for x in producttypes %}
-            <option value="{{ x.ptype }}">{{ x.ptype }}</option>
-        {% endfor %}
-    </select>
-    <br>
-    <label for="product_name">Product Name</label>
-    <select id="product_name" name="product_name">
-    </select>
-    <br>
-    <label for="from_customer">Customer</label>
-    <input type="text" name="from_customer" /><br>
-    <label for="rate">Rate</label>
-    <input type="number" name="rate" step="any" /><br>
-    <label for="quantity">Quantity</label>
-    <input type="number" name="quantity"/><br>
+    <table>
+        <tr>
+            <td>
+                <label for="product_type">Product Type</label>
+            </td>
+            <td>
+                <select id="product_type" name="product_type">
+                {% for x in producttypes %}
+                    <option value="{{ x.ptype }}">{{ x.ptype }}</option>
+                {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="product_name">Product Name</label>
+            </td>
+            <td>
+                <select id="product_name" name="product_name">
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="from_customer">Customer</label>
+            </td>
+            <td>
+                <input type="text" name="from_customer"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="rate">Rate</label>
+            </td>
+            <td>
+                <input type="number" name="rate" step="any"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="quantity">Quantity</label>
+            </td>
+            <td>
+                <input type="number" name="quantity"/>
+            </td>
+        </tr>
+    </table>
     <input type="submit" name="Submit"/>
 </form>
 
-<script src="{% static 'js/buy_sell_txn_form.js' %}"></script>
+<script src="{% static 'js/load_products_from_types.js' %}"></script>
 
 {% endblock %}

@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        body {background-color: lightcyan;}
+        footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+          }
+    </style>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <meta charset="UTF-8">
@@ -12,4 +22,7 @@
 
     {% endblock %}
 </body>
+<footer>
+    <a href="/retail/">Jump To Home</a>
+</footer>
 </html>

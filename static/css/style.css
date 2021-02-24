@@ -44,3 +44,8 @@ a:hover {
     background-color: lightgrey;
     text-decoration: underline;
 }
+
+p {
+    color: green;
+    font-weight: bold;
+}
