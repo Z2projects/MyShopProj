@@ -15,8 +15,10 @@ Available
 - the transaction should update product quantity
 - format htmls
 - customer name buy sell
+- delete product
 
 Next
 - discount percent flat buy sell
-- delete product
 - delete product type
+- search in list products
+- login logout registration
