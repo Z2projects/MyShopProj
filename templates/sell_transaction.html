@@ -8,7 +8,7 @@
 
 <h3>Sell Product</h3>
 
-<form action="selltxnsaved" method='post'>
+<form action="selltransaction" method='post'>
     {% csrf_token %}
     <table>
         <tr>
@@ -77,7 +77,7 @@
             </td>
         </tr>
     </table>
-    <input type="submit" name="Submit"/>
+    <input type="submit" name="Submit" value="Sell"/>
 </form>
 
 <script src="{% static 'js/load_products_from_types.js' %}"></script>
