@@ -2,13 +2,13 @@
 
 {% block content %}
 
-<h3>Product Type Entry Form</h3>
+<h3>Add a new Product Type</h3>
 
 <form action="tsubmitted" method='post'>
     {% csrf_token %}
     <label for="product_type">Product Type</label><br>
     <input type="text" name="product_type"><br>
-    <input type="submit" value="Submit"/>
+    <input type="submit" value="Add"/>
 </form>
 
 {% endblock %}

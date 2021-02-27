@@ -12,6 +12,9 @@
         <th>Customer</th>
         <th>Rate</th>
         <th>Quantity</th>
+        <th>Discount Type</th>
+        <th>Discount</th>
+        <th>Sell Price</th>
     </tr>
     {% for x in allsell %}
     <tr>
@@ -21,6 +24,9 @@
         <td>{{ x.to_customer }}</td>
         <td>{{ x.srate }}</td>
         <td>{{ x.squantity }}</td>
+        <td>{{ x.discounttype }}</td>
+        <td>{{ x.discount }}</td>
+        <td>{{ x.sprice }}</td>
     </tr>
     {% endfor %}
 </table>

@@ -56,6 +56,26 @@
                 <input type="number" name="quantity"/>
             </td>
         </tr>
+        <tr>
+            <td>
+                <label for="discount_type">Discount Type</label>
+            </td>
+            <td>
+                <select id="discount_type" name="discount_type">
+                    <option value="none">Select Discount Type</option>
+                    <option value="flat">flat</option>
+                    <option value="percent">percent</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="discount">Discount</label>
+            </td>
+            <td>
+                <input type="number" name="discount" value="0"/>
+            </td>
+        </tr>
     </table>
     <input type="submit" name="Submit"/>
 </form>

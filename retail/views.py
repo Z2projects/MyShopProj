@@ -79,13 +79,29 @@ def sell_product(request):
     tc = request.POST["to_customer"]
     r = request.POST["rate"]
     q = request.POST["quantity"]
+    dt = request.POST["discount_type"]
+    d = request.POST["discount"]
     if p.quantity >= int(q):
-        uq = p.quantity - int(q)
-        Product.objects.filter(name=request.POST["product_name"]).update(quantity=uq)
-        Sell.objects.create(sp=p,to_customer=tc,srate=r,squantity=q)
-        return HttpResponse("sell transaction saved")
+        if dt == 'none' or dt == 'flat':
+            uq = p.quantity - int(q)
+            sell_price = float(r) * int(q)
+            discounted_sell_price = sell_price - float(d)
+            Product.objects.filter(name=request.POST["product_name"]).update(quantity=uq)
+            Sell.objects.create(sp=p,to_customer=tc,srate=r,squantity=q,discounttype=dt,discount=d,sprice=discounted_sell_price)
+            return redirect('/retail/sellhistory')
+        elif dt == 'percent':
+            if float(d) > 0 and float(d) < 100:
+                uq = p.quantity - int(q)
+                sell_price = float(r) * int(q)
+                pd = (float(d)/100) * sell_price
+                discounted_sell_price = sell_price - pd
+                Product.objects.filter(name=request.POST["product_name"]).update(quantity=uq)
+                Sell.objects.create(sp=p,to_customer=tc,srate=r,squantity=q,discounttype=dt,discount=d,sprice=discounted_sell_price)
+                return redirect('/retail/sellhistory')
+            else:
+                return HttpResponse("sell transaction failed - ivalid percentage")
     else:
-        return HttpResponse("no stock for this product")
+        return HttpResponse("no stock for the product")
 
 def sell_history(request):
     s = Sell.objects.all()
