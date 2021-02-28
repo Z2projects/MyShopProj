@@ -16,12 +16,13 @@ Available
 - format htmls
 - customer name buy sell
 - delete product
+- discount percent flat buy sell
 
 Next
-- discount percent flat buy sell
 - delete product type
 - search in list products
 - login logout registration
+- application landing page login register
 
 Future
 - buyer -> login -> buy request
