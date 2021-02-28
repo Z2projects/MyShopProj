@@ -27,6 +27,8 @@ Next
 - hsn code for each product type
 - tax calculation buy/sell
 - generate receipt
+- credit or cash txn
+- return product
 
 Future
 - buyer -> login -> buy request
