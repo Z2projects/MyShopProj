@@ -16,7 +16,7 @@ def register(request):
                 else:
                     user = User.objects.create_user(username=un,password=pw1,first_name=fn,last_name=ln)
                     user.save()
-                    return redirect("/")
+                    return redirect("/retail")
             else:
                 return HttpResponse("password did not match")
     else:
