@@ -2,9 +2,9 @@
 
 {% block content %}
 
-<h3>Login to Retail App</h3>
+<h3>Welcome to Retail App</h3>
     
-<form action="login" method="POST">
+<form action="" method="POST">
     {% csrf_token %}
     <table>
         <tr>
@@ -27,7 +27,7 @@
     <input type="submit" value="Login">
 </form>
 <footer>
-    <a href="/account/register">Jump to Register</a>
+    <a href="/register">Jump to Register</a>
 </footer>
 
 {% endblock %}

@@ -4,7 +4,19 @@
 
 {% block content %}
 
+<style>
+    h4 {
+        position: absolute;
+        top: 0;
+        right: 0;
+        text-align: right;
+    }
+</style>
+
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+{% if user.is_authenticated %}
+<h4><a href="/logout">Logout User {{ user.username }}</a></h4>
 
 <h3>Sell Product</h3>
 
@@ -79,6 +91,8 @@
     </table>
     <input type="submit" name="Submit" value="Sell"/>
 </form>
+
+{% endif %}
 
 <script src="{% static 'js/load_products_from_types.js' %}"></script>
 

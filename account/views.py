@@ -15,9 +15,8 @@ def register(request):
                     return HttpResponse("user already exist")
                 else:
                     user = User.objects.create_user(username=un,password=pw1,first_name=fn,last_name=ln)
-                    print(user)
                     user.save()
-                    return redirect("/account/login")
+                    return redirect("/")
             else:
                 return HttpResponse("password did not match")
     else:
@@ -38,5 +37,5 @@ def login(request):
 
 def logout(request):
     auth.logout(request)
-    return redirect('/account/login')
+    return redirect('/')
         

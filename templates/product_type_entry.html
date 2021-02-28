@@ -2,6 +2,18 @@
 
 {% block content %}
 
+<style>
+    h4 {
+        position: absolute;
+        top: 0;
+        right: 0;
+        text-align: right;
+    }
+</style>
+
+{% if user.is_authenticated %}
+<h4><a href="/logout">Logout User {{ user.username }}</a></h4>
+
 <h3>Add a new Product Type</h3>
 
 <form action="newproducttypeadded" method='post'>
@@ -18,5 +30,7 @@
     </table>
     <input type="submit" value="Add"/>
 </form>
+
+{% endif %}
 
 {% endblock %}
