@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+{% if user.is_authenticated %}
+<li><a href="/account/logout">LOGOUT</a></li>
+{% else %}
+
 <h2>Retail Application</h2>
 <h3>Home</h3>
 
@@ -14,5 +19,7 @@
 <a href="/retail/listproducts">List All Products</a><br>
 <a href="/retail/buyhistory">Buy History</a><br>
 <a href="/retail/sellhistory">Sell History</a><br>
+
+{% endif %}
 
 {% endblock %}
