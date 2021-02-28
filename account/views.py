@@ -35,4 +35,8 @@ def login(request):
             return HttpResponse("invalid user or password")
     else:
         return render(request,'login.html')
+
+def logout(request):
+    auth.logout(request)
+    return redirect('/account/login')
         
