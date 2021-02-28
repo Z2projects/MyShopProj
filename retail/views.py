@@ -65,6 +65,14 @@ def product_delete(request):
     Product.objects.filter(name=p,ptype=pt[0].id).delete()
     return redirect('/retail/')
 
+def product_type_delete_form(request):
+    pt = ProductType.objects.all()
+    return render(request, 'product_type_delete.html', {'producttypes': pt})
+
+def product_type_delete(request):
+    ProductType.objects.filter(ptype=request.POST['product_type']).delete()
+    return redirect('/retail/listproducttypes')
+
 def buy_history(request):
     b = Buy.objects.all()
     return render(request, 'buy_history.html', {'allbuy': b})
