@@ -26,9 +26,10 @@ Next
 - number fields only accepting int need float here
 - search in list products
 - tax calculation buy/sell
-- generate receipt
+- generate receipt format
 - credit or cash txn
 - return product
+- need more details on hsn code
 
 Future
 - buyer -> login -> buy request

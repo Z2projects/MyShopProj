@@ -18,8 +18,8 @@ def buy_product(request):
     uq = p.quantity + int(q)
     Product.objects.filter(name=request.POST['product_name']).update(quantity=uq)
     Buy.objects.create(bp=p,from_customer=fc,brate=r,bquantity=q)
-    res = p.name + ' of type ' + p.ptype.ptype + ' purchased from customer ' + fc
-    return render(request,'results.html', {'result': res})
+    cp = int(q) * int(r)
+    return render(request,'buyreceipt.html', {'pt':p.ptype.ptype,'pn':p.name,'cn':fc,'q':q,'r':r,'cp':cp})
 
 def product_type_form(request):
     return render(request, 'product_type_entry.html')
@@ -97,7 +97,8 @@ def sell_product(request):
             discounted_sell_price = sell_price - float(d)
             Product.objects.filter(name=request.POST["product_name"]).update(quantity=uq)
             Sell.objects.create(sp=p,to_customer=tc,srate=r,squantity=q,discounttype=dt,discount=d,sprice=discounted_sell_price)
-            return redirect('/retail/sellhistory')
+            #return redirect('/retail/sellhistory')
+            return render(request,'sellreceipt.html', {'pt':p.ptype.ptype,'pn':p.name,'cn':tc,'q':q,'r':r,'sp':discounted_sell_price})
         elif dt == 'percent':
             if float(d) > 0 and float(d) < 100:
                 uq = p.quantity - int(q)
@@ -106,9 +107,10 @@ def sell_product(request):
                 discounted_sell_price = sell_price - pd
                 Product.objects.filter(name=request.POST["product_name"]).update(quantity=uq)
                 Sell.objects.create(sp=p,to_customer=tc,srate=r,squantity=q,discounttype=dt,discount=d,sprice=discounted_sell_price)
-                return redirect('/retail/sellhistory')
+                #return redirect('/retail/sellhistory')
+                return render(request,'sellreceipt.html', {'pt':p.ptype.ptype,'pn':p.name,'cn':tc,'q':q,'r':r,'sp':discounted_sell_price})
             else:
-                return HttpResponse("sell transaction failed - ivalid percentage")
+                return HttpResponse("sell transaction failed - invalid percentage")
     else:
         return HttpResponse("no stock for the product")
 
