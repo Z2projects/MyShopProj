@@ -17,9 +17,11 @@
 <h3>Product Types</h3>
 
 <table>
+    <th>HSN Code</th>
     <th>Product Type</th>
     {% for x in ptypes %}
     <tr>
+        <td>{{ x.hsncode }}</td>
         <td>{{ x.ptype }}</td>
     </tr>
     {% endfor %}

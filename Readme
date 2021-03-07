@@ -19,12 +19,12 @@ Available
 - discount percent flat buy sell
 - delete product type
 - login logout registration
+- hsn code for each product type
+- application landing page login register
 
 Next
 - number fields only accepting int need float here
 - search in list products
-- application landing page login register
-- hsn code for each product type
 - tax calculation buy/sell
 - generate receipt
 - credit or cash txn

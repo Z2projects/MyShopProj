@@ -26,11 +26,12 @@ def product_type_form(request):
 
 def product_type_save(request):
     t = request.POST["product_type"]
+    hc = request.POST["hsncode"]
     try:
         ProductType.objects.get(ptype=t)
         return HttpResponse("product type already exists")
     except ProductType.DoesNotExist:
-        ProductType.objects.create(ptype=t)
+        ProductType.objects.create(ptype=t,hsncode=hc)
         return HttpResponse("new product type saved")
 
 def product_type_list(request):

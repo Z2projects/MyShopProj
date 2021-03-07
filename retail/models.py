@@ -3,6 +3,7 @@ from datetime import datetime
 
 class ProductType(models.Model):
     ptype = models.CharField(max_length=10, unique=True)
+    hsncode = models.CharField(max_length=10, unique=True)
 
 class Product(models.Model):
     name = models.CharField(max_length=10, unique=True)
