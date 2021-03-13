@@ -27,8 +27,10 @@
     <input type="submit" value="Login">
 </form>
 
-<!--<footer>
-    <a href="/register">Jump to Register</a>
-</footer>-->
+<div>
+    {% for msg in messages %}
+    <h4>{{ msg }}</h4>
+    {% endfor %}
+</div>
 
 {% endblock %}
