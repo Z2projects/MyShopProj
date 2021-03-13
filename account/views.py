@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
 from django.http import HttpResponse
+from django.contrib import messages
 
 # Create your views here.
 def register(request):
@@ -12,13 +13,15 @@ def register(request):
             pw2 = request.POST['password2']
             if pw1 == pw2:
                 if User.objects.filter(username=un).exists():
-                    return HttpResponse("user already exist")
+                    messages.info(request,'user already exists')
+                    return redirect('/register')
                 else:
                     user = User.objects.create_user(username=un,password=pw1,first_name=fn,last_name=ln)
                     user.save()
                     return redirect("/retail")
             else:
-                return HttpResponse("password did not match")
+                messages.info(request,'password did not match')
+                return redirect('/register')
     else:
         return render(request,'register.html')
             
@@ -31,7 +34,8 @@ def login(request):
             auth.login(request, user)
             return redirect('/retail')
         else:
-            return HttpResponse("invalid user or password")
+            messages.info(request,'username or password incorrect')
+            return redirect('/login')
     else:
         return render(request,'login.html')
 
@@ -39,3 +43,5 @@ def logout(request):
     auth.logout(request)
     return redirect('/')
         
+def landingPage(request):
+    return render(request,'landingpage.html')

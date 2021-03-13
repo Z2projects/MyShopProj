@@ -5,6 +5,7 @@ from .models import Product
 from .models import Buy
 from .models import Sell
 from django.http import JsonResponse
+from django.contrib import messages
 
 def buy_product_form(request):
     pt = ProductType.objects.all()
@@ -29,10 +30,12 @@ def product_type_save(request):
     hc = request.POST["hsncode"]
     try:
         ProductType.objects.get(ptype=t)
-        return HttpResponse("product type already exists")
+        messages.info(request,'product already exists')
+        return redirect('/retail/newproducttype')
     except ProductType.DoesNotExist:
         ProductType.objects.create(ptype=t,hsncode=hc)
-        return HttpResponse("new product type saved")
+        messages.info(request,'product saved')
+        return redirect('/retail/newproducttype')
 
 def product_type_list(request):
     p = ProductType.objects.all()
@@ -47,10 +50,12 @@ def product_save(request):
     p = request.POST["product_name"]
     try:
         Product.objects.get(name=p)    
-        return HttpResponse("product already exists")
+        messages.info(request,'product already exists')
+        return redirect('/retail/newproduct')
     except Product.DoesNotExist:
         Product.objects.create(name=p,ptype=t)
-        return HttpResponse("new product saved")
+        messages.info(request,'product saved')
+        return redirect('/retail/newproduct')
 
 def product_list(request):
     p = Product.objects.all()
@@ -64,7 +69,7 @@ def product_delete(request):
     p = request.POST['product_name']
     pt = ProductType.objects.filter(ptype=request.POST['product_type'])
     Product.objects.filter(name=p,ptype=pt[0].id).delete()
-    return redirect('/retail/')
+    return redirect('/retail/listproducts')
 
 def product_type_delete_form(request):
     pt = ProductType.objects.all()
